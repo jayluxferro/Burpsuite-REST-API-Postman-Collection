@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "a5a8969a-b72a-42fb-a649-161243ebb236",
+		"name": "BurpSuite REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1492145"
+	},
+	"item": [
+		{
+			"name": "Issue Definitions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{api_key}}/{{version}}/knowledge_base/issue_definitions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{api_key}}",
+						"{{version}}",
+						"knowledge_base",
+						"issue_definitions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"urls\": [\n\t\t\t\"http://10.10.10.5:4200\"\n\t\t],\n\t\t\"scan_configuration\": [\n\t\t\t{\n\t\t\t\t\"name\": \"Audit checks - Bchecks only\",\n\t\t\t\t\"type\": \"NamedConfiguration\"\n\t\t\t}\n\t\t],\n\t\t\"resource_pool\": \"Default resource pool\", // use default or specify default resource pool\n\t\t\"protocol_option\": \"specified\" // specified or httpAndHttps\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{api_key}}/{{version}}/scan",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{api_key}}",
+						"{{version}}",
+						"scan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scan Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{api_key}}/{{version}}/scan/:task_id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{api_key}}",
+						"{{version}}",
+						"scan",
+						":task_id"
+					],
+					"variable": [
+						{
+							"key": "task_id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:1337",
+			"type": "string"
+		},
+		{
+			"key": "api_key",
+			"value": "di0wZzYJrBNbxABNAruS9PgNv5EsDFqk",
+			"type": "string"
+		},
+		{
+			"key": "version",
+			"value": "v0.1",
+			"type": "string"
+		}
+	]
+}
